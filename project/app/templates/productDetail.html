@@ -1,0 +1,417 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="{% static "css/style.css" %}" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 8%;
+}
+nav .logo{
+    font-size: 32px;
+    font-weight: 500;
+    cursor: pointer;
+}
+nav ul li{
+    list-style: none;
+    display: inline-block;
+}
+nav ul li a{
+    display: block;
+    margin: 0 10px;
+    color: #000;
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 17px;
+    position: relative;
+}
+nav ul li a::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    width: 0;
+    height: 2.5px;
+    transition: all 0.3s ease;
+}
+nav ul li a:hover::before{
+    width: 100%;
+}
+nav ul i{
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+} */
+.flex-box{
+    display: flex;
+    width: 1000px;
+    margin: 20px auto;
+}
+.left{
+    width: 40%;
+}
+.big-img{
+    width: 250px;
+}
+.big-img img{
+    width: inherit;
+}
+.images{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin-top: 15px;
+}
+.small-img{
+    width: 50px;
+    overflow: hidden;
+    border: 1.5px solid black;
+}
+.small-img img{
+    width: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.small-img:hover img{
+    transform: scale(1.2);
+}
+.url{
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(0, 102, 255);
+}
+.pname{
+    font-size: 22px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+.ratings i{
+    color: rgb(255, 136, 0);
+}
+.price{
+    font-size: 20px;
+    font-weight: 500;
+    margin: 20px 0;
+}
+.size{
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+.size p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.psize{
+    width: 60px;
+    height: 30px;
+    border: 1px solid #ff5e00;
+    color: #000;
+    text-align: center;
+    margin: 0 10px;
+    cursor: pointer;
+}
+.psize.active{
+    border-width: 1.5px;
+    color: #ff5e00;
+    font-weight: 500;
+}
+.quantity{
+    display: flex;
+}
+.quantity p{
+    font-size: 18px;
+    font-weight: 500;
+}
+.quantity input{
+    width: 40px;
+    font-size: 17px;
+    font-weight: 500;
+    text-align: center;
+    margin-left: 15px;
+}
+.btn-box{
+    display: flex;
+    margin-top: 40px;
+}
+.btn-box button{
+    font-size: 18px;
+    padding: 8px 25px;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+}
+.cart-btn{
+    background-color: #ff5e00;
+    margin-right: 20px;
+}
+.buy-btn{
+    background-color: #00aeff;
+}
+.cart-btn:hover{
+    background-color: #ff3c00;
+}
+.buy-btn:hover{
+    background-color: #0066ff;
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <section class=" top-txt ">
+        <div class="head container ">
+            <div class="head-txt ">
+                <p>Free shipping, 30-day return or refund guarantee.</p>
+            </div>
+            <div class="sing_in_up ">
+                <a href="# ">SIGN IN</a>
+                <a href="# ">SIGN UP</a>
+            </div>
+        </div>
+    </section>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <input type="checkbox" name="" id="checkbox">
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+            <ul class="menu-items">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#sellers">Shop</a></li>
+                <li><a href="#news">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="logo">
+                <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="">
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex-box">
+        <div class="left">
+            <div class="big-img">
+                <img src="{% static "\css\images\p1.png" %}">
+            </div>
+            <div class="images">
+                <div class="small-img">
+                    <img src="{% static "\css\images\p1.png" %}" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="{% static "\css\images\p2.png" %}" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="{% static "\css\images\p3.png" %}" onclick="showImg(this.src)">
+                </div>
+                <div class="small-img">
+                    <img src="{% static "\css\images\p4.png" %}" onclick="showImg(this.src)">
+                </div>
+            </div>
+        </div>
+
+        <div class="right">
+            <div class="pname">T-Shirts for Men</div>
+            <div class="ratings">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price">$40</div>
+            <div class="size">
+                <p>Size :</p>
+                <div class="psize active">M</div>
+                <div class="psize">L</div>
+                <div class="psize">XL</div>
+                <div class="psize">XXL</div>
+            </div>
+            <div class="quantity">
+                <p>Quantity :</p>
+                <input type="number" min="1" max="5" value="1">
+            </div>
+            <div class="btn-box">
+                <button class="cart-btn">Add to Cart</button>
+                <button class="buy-btn">Buy Now</button>
+            </div>
+        </div>
+    </div>
+    <div class="seller container">
+        <h2>New Arrivals</h2>
+        <div class="best-seller">
+            <div class="best-p1">
+                <img src="{% static "\css\images\p1.png" %}" alt="img">
+                <div class="best-p1-txt">
+                    <div class="name-of-p">
+                        <p>PS England T-Shirt</p>
+                    </div>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <div class="price">
+                        &dollar;10.23
+                        <div class="colors">
+                            <i class='bx bxs-circle blank'></i>
+                            <i class='bx bxs-circle blue'></i>
+                            <i class='bx bxs-circle brown'></i>
+                        </div>
+                    </div>
+                    <div class="buy-now">
+                        <button><a href="{% url 'product' %}">Buy  Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="best-p1">
+                <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="img">
+                <div class="best-p1-txt">
+                    <div class="name-of-p">
+                        <p>PS England Bag</p>
+                    </div>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                        <i class='bx bx-star'></i>
+                    </div>
+                    <div class="price">
+                        &dollar;09.28
+                        <div class="colors">
+                            <i class='bx bxs-circle brown'></i>
+                            <i class='bx bxs-circle red'></i>
+                            <i class='bx bxs-circle green'></i>
+                        </div>
+                    </div>
+                    <div class="buy-now">
+                        <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="best-p1">
+                <img src="https://i.postimg.cc/Dfj5VBcz/sunglasses1.jpg" alt="img">
+                <div class="best-p1-txt">
+                    <div class="name-of-p">
+                        <p>PS England Sunglass</p>
+                    </div>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <div class="price">
+                        &dollar;06.24
+                        <div class="colors">
+                            <i class='bx bxs-circle grey'></i>
+                            <i class='bx bxs-circle blank'></i>
+                            <i class='bx bxs-circle blank'></i>
+                        </div>
+                    </div>
+                    <div class="buy-now">
+                        <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="best-p1">
+                <img src="https://i.postimg.cc/FszW12Kc/na4.png" alt="img">
+                <div class="best-p1-txt">
+                    <div class="name-of-p">
+                        <p>PS England Shoes</p>
+                    </div>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <div class="price">
+                        &dollar;43.67
+                        <div class="colors">
+                            <i class='bx bxs-circle grey'></i>
+                            <i class='bx bxs-circle red'></i>
+                            <i class='bx bxs-circle blue'></i>
+                        </div>
+                    </div>
+                    <div class="buy-now">
+                        <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container container">
+            <div class="content_1">
+                <img src="https://i.postimg.cc/htGyQ4JB/footer-logo.png" alt="logo">
+                <p>The customer is at the heart of our<br>unique business model, which includes<br>design.</p>
+                <img src="https://i.postimg.cc/Nj9dgJ98/cards.png" alt="cards">
+            </div>
+            <div class="content_2">
+                <h4>SHOPPING</h4>
+                <a href="#sellers">Clothing Store</a>
+                <a href="#sellers">Trending Shoes</a>
+                <a href="#sellers">Accessories</a>
+                <a href="#sellers">Sale</a>
+            </div>
+            <div class="content_3">
+                <h4>SHOPPING</h4>
+                <a href="./#contact">Contact Us</a>
+                <a href="https://payment-method-sb.netlify.app/" target="_blank">Payment Method</a>
+                <a href="https://delivery-status-sb.netlify.app/" target="_blank">Delivery</a>
+                <a href="https://codepen.io/sandeshbodake/full/Jexxrv" target="_blank">Return and Exchange</a>
+            </div>
+            <div class="content_4">
+                <h4>NEWLETTER</h4>
+                <p>Be the first to know about new<br>arrivals, look books, sales & promos!</p>
+                <div class="f-mail">
+                    <input type="email" placeholder="Your Email">
+                    <i class='bx bx-envelope'></i>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="f-design">
+            <div class="f-design-txt container">
+                <p>Design and Code by Azhan-Adhiraj</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let bigImg = document.querySelector('.big-img img');
+        function showImg(pic){
+            bigImg.src = pic;
+        }
+    </script>
+</body>
+</html>

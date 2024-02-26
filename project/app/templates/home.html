@@ -11,8 +11,8 @@
        <style>
           @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Lobster+Two&display=swap');
        </style>
-       {% comment %} <link rel="stylesheet" href="../CSS/assest/image/test.css" /> {% endcomment %}
-       <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+       <link rel="stylesheet" href="../CSS/assest/image/test.css" />
+       <link rel="stylesheet" href="{% static "css/style.css" %}" />
     </head>
     <body>
       <section class=" top-txt ">
@@ -210,7 +210,7 @@
               <h2>New Arrivals</h2>
               <div class="best-seller">
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/fbnB2yfj/na1.png" alt="img">
+                      <img src="{% static "\css\images\p1.png" %}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
                               <p>PS England T-Shirt</p>
@@ -231,7 +231,7 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
@@ -499,6 +499,7 @@
           </form>
       </div>
       </section>
+      
       <footer>
           <div class="footer-container container">
               <div class="content_1">

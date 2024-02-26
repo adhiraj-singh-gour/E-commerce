@@ -19,3 +19,7 @@ def contact(request):
     )
     msg = "Send Successfully"
     return render(request,'home.html',{"msg":msg})
+
+
+def product(request):
+    return render(request,'productDetail.html')
