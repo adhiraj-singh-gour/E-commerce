@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from .models import User
+from .models import *
+from .forms import Product
 
 # Create your views here.
 def home(request):
@@ -23,3 +24,17 @@ def contact(request):
 
 def product(request):
     return render(request,'productDetail.html')
+
+
+def pro_detail(request):
+    if request.method == "POST":
+        form = Product(request.POST, request.FILES)
+        if form.is_valid():
+            form.save() 
+    form = Product()
+    return render(request, "add.html", {"form": form})
+
+
+def show(request):
+    data = Products.objects.all()
+    return render(request, "show.html", {"data": data})
