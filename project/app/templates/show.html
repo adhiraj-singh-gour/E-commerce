@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Show All data</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Image</th>
+            <th>Resume</th>
+        </tr>
+        <tbody>
+        {% for i in data %}
+            <tr>
+                <th>{{i.id}}</th>
+                <th>{{i.name}}</th>
+                <th>{{i.email}}</th>
+                <th>{{i.contact}}</th>
+                <th><img src="{{i.image.url}}" hight="100" width="100"></th>
+                <th>{{i.resume}}</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </thead>
+</table>
+</body>
+</html>
