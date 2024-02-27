@@ -215,26 +215,35 @@ nav ul i{
     <div class="flex-box">
         <div class="left">
             <div class="big-img">
-                <img src="{% static "\css\images\p1.png" %}">
+                <img src="{{data.image.url}}">
             </div>
             <div class="images">
+              
                 <div class="small-img">
-                    <img src="{% static "\css\images\p1.png" %}" onclick="showImg(this.src)">
+                    <img src="{{data.image.url}}" onclick="showImg(this.src)">
                 </div>
+
+                {% comment %} {% elif i.id == 2 %}                    
                 <div class="small-img">
-                    <img src="{% static "\css\images\p2.png" %}" onclick="showImg(this.src)">
+                    <img src="{{i.image.url}}" onclick="showImg(this.src)">
                 </div>
+
+                {% elif i.id == 3 %}
                 <div class="small-img">
-                    <img src="{% static "\css\images\p3.png" %}" onclick="showImg(this.src)">
+                    <img src="{{i.image.url}}" onclick="showImg(this.src)">
                 </div>
+
+                {% else %}
                 <div class="small-img">
-                    <img src="{% static "\css\images\p4.png" %}" onclick="showImg(this.src)">
+                    <img src="{{i.image.url}}" onclick="showImg(this.src)">
                 </div>
+                {% endif %}
+                {% endfor %} {% endcomment %}
             </div>
         </div>
 
         <div class="right">
-            <div class="pname">T-Shirts for Men</div>
+            <div class="pname">{{data.Name}}</div>
             <div class="ratings">
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
@@ -242,11 +251,11 @@ nav ul i{
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star-half-alt"></i>
             </div>
-            <div class="price">$40</div>
+            <div class="price">{{data.Price}}</div>
             <div class="size">
                 <p>Size :</p>
                 <div class="psize active">M</div>
-                <div class="psize">L</div>
+                <div class="psize active">L</div>
                 <div class="psize">XL</div>
                 <div class="psize">XXL</div>
             </div>
@@ -255,12 +264,15 @@ nav ul i{
                 <input type="number" min="1" max="5" value="1">
             </div>
             <div class="btn-box">
-                <button class="cart-btn">Add to Cart</button>
+                <form action="{% url 'cart' pk=data.id %}" method="POST">
+                    {% csrf_token %}
+                    <button class="cart-btn" type="submit">Add to Cart</button>
+                </form>
                 <button class="buy-btn">Buy Now</button>
             </div>
         </div>
     </div>
-    <div class="seller container">
+    {% comment %} <div class="seller container">
         <h2>New Arrivals</h2>
         <div class="best-seller">
             <div class="best-p1">
@@ -368,7 +380,7 @@ nav ul i{
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     <footer>
         <div class="footer-container container">
             <div class="content_1">

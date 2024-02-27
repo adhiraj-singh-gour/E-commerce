@@ -6,30 +6,31 @@
     <title>Document</title>
 </head>
 <body>
+    <center>
     <h1>Show All data</h1>
-<table border="1">
+<table border="1" width="50%" cellpadding="" cellspacing="">
     <thead>
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Contact</th>
+            <th>Description</th>
+            <th>Price</th>
             <th>Image</th>
-            <th>Resume</th>
         </tr>
         <tbody>
         {% for i in data %}
             <tr>
                 <th>{{i.id}}</th>
-                <th>{{i.name}}</th>
-                <th>{{i.email}}</th>
-                <th>{{i.contact}}</th>
-                <th><img src="{{i.image.url}}" hight="100" width="100"></th>
-                <th>{{i.resume}}</th>
+                <th>{{i.Name}}</th>
+                <th>{{i.Description}}</th>
+                <th>${{i.Price}}</th>
+                <th><img src="{{i.image.url}}" height="70" width="70"></th>
+        
             </tr>
         {% endfor %}
         </tbody>
     </thead>
 </table>
+</center>
 </body>
 </html>

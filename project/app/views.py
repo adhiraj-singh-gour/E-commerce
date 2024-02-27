@@ -4,7 +4,11 @@ from .forms import Product
 
 # Create your views here.
 def home(request):
-    return render(request,'home.html')
+    data = Products.objects.filter(Type="tshirt")
+    data1 = Products.objects.filter(Type="shoes")
+    data2 = Products.objects.filter(Type="glasses")
+    return render(request, "home.html", {"ts": data,"sh":data1,"sg":data2})
+
 
 
 def contact(request):
@@ -22,8 +26,15 @@ def contact(request):
     return render(request,'home.html',{"msg":msg})
 
 
-def product(request):
-    return render(request,'productDetail.html')
+def product(request,pk):
+    
+    data = Products.objects.get(id=pk)
+    
+    return render(request,'productDetail.html', {"data": data})
+
+def cart(request,pk):
+    data = Products.objects.get(id=pk)
+    return
 
 
 def adminpage(request):

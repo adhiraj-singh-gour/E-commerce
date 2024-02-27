@@ -95,13 +95,17 @@
       </section>
       <section id="sellers">
           <div class="seller container">
-              <h2>Top Sales</h2>
+              <h2>T-Shirts</h2>
               <div class="best-seller">
+                
+                {% for i in ts %}
+                    
+                {% if i.id == 1 %}                            
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/8CmBZH5N/shoes.webp" alt="img">
+                      <img src="{{i.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Shoes</p>
+                              <p>{{i.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -111,7 +115,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;37.24
+                              &dollar;{{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle red'></i>
                                   <i class='bx bxs-circle blue'></i>
@@ -119,18 +123,19 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=i.id %}">Buy  Now</a></button>
                           </div>
                           <!-- <div class="add-cart">
                               <button>Add To Cart</button>
                           </div> -->
                       </div>
                   </div>
+                  {% elif i.id == 2 %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/76X9ZV8m/Screenshot_from_2022-06-03_18-45-12.png" alt="img">
+                      <img src="{{i.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Jacket</p>
+                              <p>{{i.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -140,7 +145,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;17.24
+                              &dollar;{{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle green'></i>
                                   <i class='bx bxs-circle grey'></i>
@@ -148,15 +153,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=i.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% elif i.id == 3 %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/j2FhzSjf/bs2.png" alt="img">
+                    <img src="{{i.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Shirt</p>
+                              <p>{{i.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -166,7 +172,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;27.24
+                              &dollar;{{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle brown'></i>
                                   <i class='bx bxs-circle green'></i>
@@ -174,15 +180,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=i.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% else %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/QtjSDzPF/bs3.png" alt="img">
+                    <img src="{{i.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Shoes</p>
+                              <p>{{i.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -192,7 +199,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;43.67
+                              &dollar;{{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle red'></i>
                                   <i class='bx bxs-circle grey'></i>
@@ -200,20 +207,29 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=i.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% endif %}
+                  {% endfor %}
               </div>
           </div> 
+
+
           <div class="seller container">
-              <h2>New Arrivals</h2>
+              <h2>Shoes</h2>
               <div class="best-seller">
+
+                
+                {% for j in sh %}
+                    
+                    {% if j.id == 1 %}
                   <div class="best-p1">
-                      <img src="{% static "\css\images\p1.png" %}" alt="img">
+                      <img src="{{j.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England T-Shirt</p>
+                              <p>{{j.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -223,7 +239,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;10.23
+                              &dollar;{{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle blue'></i>
@@ -231,15 +247,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="{% url 'product' %}">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=j.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% elif j.id == 2 %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="img">
+                      <img src="{{j.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Bag</p>
+                              <p>{{j.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -249,7 +266,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;09.28
+                              &dollar;{{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle brown'></i>
                                   <i class='bx bxs-circle red'></i>
@@ -257,15 +274,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=j.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% elif j.id == 3 %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/Dfj5VBcz/sunglasses1.jpg" alt="img">
+                      <img src="{{j.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Sunglass</p>
+                              <p>{{j.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -275,7 +293,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;06.24
+                              &dollar;{{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle grey'></i>
                                   <i class='bx bxs-circle blank'></i>
@@ -283,15 +301,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=j.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% else %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/FszW12Kc/na4.png" alt="img">
+                      <img src="{{j.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Shoes</p>
+                              <p>{{j.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -301,7 +320,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;43.67
+                              &dollar;{{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle grey'></i>
                                   <i class='bx bxs-circle red'></i>
@@ -309,20 +328,27 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=j.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% endif %}
+                  {% endfor %}
               </div>
           </div>
           <div class="seller container">
-              <h2>Hot Sales</h2>
+              <h2>Sunglasses</h2>
               <div class="best-seller">
+                
+                {% for k in sg %}
+                    
+                
+                {% if k.id == 1 %}                    
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/jS7pSQLf/na4.png" alt="img">
+                      <img src="{{k.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Shoes</p>
+                              <p>{{k.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -332,7 +358,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;37.24
+                              &dollar;{{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle grey'></i>
                                   <i class='bx bxs-circle black'></i>
@@ -340,15 +366,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=k.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% elif k.id == 2 %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/fbnB2yfj/na1.png" alt="img">
+                      <img src="{{k.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England T-Shirt</p>
+                              <p>{{k.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -358,7 +385,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;10.23
+                              &dollar;{{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle blue'></i>
@@ -366,15 +393,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=k.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% elif k.id == 3 %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/RhVP7YQk/hs1.png" alt="img">
+                      <img src="{{k.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England T-Shirt</p>
+                              <p>{{k.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -384,7 +412,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;15.24
+                              &dollar;{{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle red'></i>
@@ -392,15 +420,16 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=k.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% else %}
                   <div class="best-p1">
-                      <img src="https://i.postimg.cc/zD02zJq8/na2.png" alt="img">
+                      <img src="{{k.image.url}}" alt="img">
                       <div class="best-p1-txt">
                           <div class="name-of-p">
-                              <p>PS England Bag</p>
+                              <p>{{k.Name}}</p>
                           </div>
                           <div class="rating">
                               <i class='bx bxs-star'></i>
@@ -410,7 +439,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;09.28
+                              &dollar;{{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle grey'></i>
@@ -418,10 +447,12 @@
                               </div>
                           </div>
                           <div class="buy-now">
-                              <button><a href="https://codepen.io/sanketbodke/full/mdprZOq">Buy  Now</a></button>
+                              <button><a href="{% url 'product' pk=k.id %}">Buy  Now</a></button>
                           </div>
                       </div>
                   </div>
+                  {% endif %}
+                  {% endfor %}
               </div>
           </div>
       </section>
