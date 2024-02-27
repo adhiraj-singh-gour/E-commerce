@@ -33,8 +33,12 @@ def product(request,pk):
     return render(request,'productDetail.html', {"data": data})
 
 def cart(request,pk):
+    card = request.session.get('card',[])
+    card.append(pk)
+    request.session['card'] = card
+    print(card)
     data = Products.objects.get(id=pk)
-    return
+    return render(request,'productDetail.html', {"data": data})
 
 
 def adminpage(request):
