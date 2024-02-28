@@ -32,7 +32,10 @@ def product(request,pk):
     
     return render(request,'productDetail.html', {"data": data})
 
-def cart(request,pk):
+def cart(request):
+    return render(request,'cart.html')
+
+def add_cart(request,pk):
     card = request.session.get('card',[])
     card.append(pk)
     request.session['card'] = card
