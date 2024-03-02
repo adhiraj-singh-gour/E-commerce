@@ -12,3 +12,10 @@ class Products(models.Model):
     Price = models.DecimalField(max_digits=5, decimal_places=2)
     Description = models.CharField(max_length=200)
     image = models.ImageField(upload_to="images/", height_field=None,width_field=None,max_length=100)
+
+
+class Signup(models.Model):
+    username = models.CharField(max_length=30)
+    email = models.EmailField()
+    password = models.CharField(max_length=30)
+    Cpassword = models.CharField(max_length=30)

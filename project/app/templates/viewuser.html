@@ -28,7 +28,7 @@
           </li>
 
           <li>
-            <a href="{% url "adminpage" %}">
+            <a href="#">
               <span class="icon">
                 <ion-icon name="home-outline"></ion-icon>
               </span>
@@ -55,7 +55,7 @@
           </li>
 
           <li>
-            <a href="{% url "viewuser" %}">
+            <a href="#">
               <span class="icon">
                 <ion-icon name="help-outline"></ion-icon>
               </span>
@@ -170,24 +170,18 @@
               <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th>Update</th>
-                    <th>Delete</th>
-
+                    <th>USERNAME</th>
+                    <th>EMAIL</th>
+                    <th>PASSWORD</th>
                 </tr>
                 <tbody>
-                {% for i in data %}
+                {% for i in user %}
                     <tr>
                         <th>{{i.id}}</th>
-                        <th>{{i.Name}}</th>
-                        <th>{{i.Description}}</th>
-                        <th>${{i.Price}}</th>
-                        <th><img src="{{i.image.url}}" height="70" width="70"></th>
-                        <th><a href="{% url 'update' pk=i.id %}">Update</a></th>
-                        <th><a href="{% url 'delete' pk=i.id %}">Delete</a></th>
+                        <th>{{i.username}}</th>
+                        <th>{{i.email}}</th>
+                        <th>${{i.password}}</th>
+                        {% comment %} <th><img src="{{i.image.url}}" height="70" width="70"></th> {% endcomment %}
                 
                     </tr>
                 {% endfor %}
@@ -196,8 +190,8 @@
             </table>
           </div>
 
-          {% comment %} <!-- ================= New Customers ================ -->
-          <div class="recentCustomers">
+          <!-- ================= New Customers ================ -->
+          {% comment %} <div class="recentCustomers">
             <div class="cardHeader">
               <h2>Recent Customers</h2>
             </div>

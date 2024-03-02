@@ -267,7 +267,7 @@ nav ul i{
             <div class="btn-box">
                 <form action="{% url 'add_cart' pk=data.id %}" method="POST">
                     {% csrf_token %}
-                    <button class="cart-btn" type="submit"  coclick=count();>Add to Cart</button>
+                    <button class="cart-btn" type="submit"  onclick=count();>Add to Cart</button>
                 </form>
                 <button class="buy-btn">Buy Now</button>
             </div>
@@ -419,14 +419,14 @@ nav ul i{
             </div>
         </div>
     </footer>
-
+    
     <script>
         let bigImg = document.querySelector('.big-img img');
         function showImg(pic){
             bigImg.src = pic;
         }
         let count=0
-        function coclick(){
+        function count(){
             count++
             if (count % 2 ==  0) {  return false;} else{return true}
         };
