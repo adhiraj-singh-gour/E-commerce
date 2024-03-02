@@ -299,7 +299,7 @@ body {
 }
 
 .details table {
-  width: 100%;
+  width: 70vw;
   border-collapse: collapse;
   margin-top: 10px;
 }

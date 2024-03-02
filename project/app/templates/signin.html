@@ -79,8 +79,10 @@
 </head>
 <body>
   <div class="login-container">
-    <h2>Login</h2>
-    <form action="#" method="POST">
+    <h4 style="color:red;">{{msg}}</h4>
+    <h2>Signin</h2>
+    <form action="{% url "usersignin" %}" method="POST">
+      {% csrf_token %}
       <div class="input-group">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" required>
@@ -89,16 +91,17 @@
         <label for="password">Password</label>
         <input type="password" id="password" name="password" required>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit">Signin</button>
     </form>
     <div class="social-login">
       <p>Or login with:</p>
       <div class="social-buttons">
         <button class="btn-facebook">Facebook</button>
         <button class="btn-twitter">Twitter</button>
-        <button class="btn-google"><a href="{% url "social:begin" "google-oauth2" %}"></a>Google</button>
+        <button class="btn-google"><a href=""></a>Google</button>
       </div>
     </div>
+    <p>Already have an account? <a href="{% url "signup" %}">Signup here</a></p>
   </div>
 </body>
 </html>
