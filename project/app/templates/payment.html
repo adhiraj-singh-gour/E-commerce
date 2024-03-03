@@ -25,7 +25,8 @@
         <button type="submit">Buy</button>
         <br /><br />
     </form> {% endcomment %}
-        <form action="" method="post">    
+        <form action="" method="post"> 
+            {% csrf_token %}   
         <script
             src="https://checkout.razorpay.com/v1/checkout.js"
             data-key="rzp_test_ank5gb82ed6Jfx"
