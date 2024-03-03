@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .models import *
-from .forms import Product
+from .forms import *
 
 # Create your views here.
 def home(request):
@@ -108,7 +108,6 @@ def product(request,pk):
 
 def cart(request):
     card = request.session['card']
-    
     data = {}
     key = 1
     sum = 0
@@ -126,9 +125,23 @@ def remove(request,pk):
      request.session['card'] = card
      return redirect('/cart')
      
+def checkout(request):
+    card = request.session['card']
+    data = {}
+    key = 1
+    sum = 0
+    items = 0
+    for i in card:
+        data[key] = Products.objects.get(id=i)
+        sum = sum + data[key].Price
+        key+=1
+    items += len(data.keys())
+    username = request.session['name']
+    email=request.session['email']
+    return render(request,'checkout.html',{"data": data.values,'sum':sum,'items':items,'username':username, 'email':email})     
 
 def add_cart(request,pk):
-    card = request.session.get('card',[0])
+    card = request.session.get('card',[])
     card.append(pk)
     request.session['card'] = card
     print(card)
@@ -177,3 +190,36 @@ def delete(request, pk):
     data.delete()
     data=Products.objects.all()
     return render(request,'admin.html')
+
+
+
+
+
+
+
+# Create your views here.
+import razorpay
+from django.views.decorators.csrf import csrf_exempt
+
+def item_payment(request):
+    if request.method=="POST":
+        name = request.POST.get('name')
+        print(name)
+        amount = float(request.POST.get('amount')) * 100
+        print(amount)
+        client = razorpay.Client(auth=("rzp_test_ank5gb82ed6Jfx","jPpRlGXIaMvgyrlcb1gXuEoV"))
+        response_payment = client.order.create({'amount':amount, 'currency':'INR','payment_capture':'1' })
+    
+        print(response_payment)
+        order_status = response_payment['status']
+        order_id = response_payment['id']
+        
+        if order_status=='created':
+            product = ItemModel(name=name , amount =amount , order_id = response_payment['id'])
+            product.save()
+            response_payment['name'] = name
+            fm = PaymentForm( request.POST or None)
+            return render(request,'payment.html',{'form':fm,'payment':response_payment})
+
+    fm = PaymentForm()
+    return render(request,'payment.html',{'form':fm})
