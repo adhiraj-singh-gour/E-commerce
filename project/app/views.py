@@ -115,16 +115,20 @@ def cart(request):
     items = 0
     for i in card:
         data[key] = Products.objects.get(id=i)
-        print(data)
         sum = sum + data[key].Price
         key+=1
-    items += len(data.keys())       
-    print(sum) 
+    items += len(data.keys())
     return render(request,'cart.html', {"data": data.values,'sum':sum,'items':items})
-        # return render(request,'cart.html')
+    
+def remove(request,pk):
+     card = request.session['card']
+     card.remove(pk)
+     request.session['card'] = card
+     return redirect('/cart')
+     
 
 def add_cart(request,pk):
-    card = request.session.get('card',[])
+    card = request.session.get('card',[0])
     card.append(pk)
     request.session['card'] = card
     print(card)
