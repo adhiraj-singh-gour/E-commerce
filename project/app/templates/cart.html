@@ -25,14 +25,16 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#sellers">Shop</a></li>
                 <li><a href="#news">Blog</a></li>
-                <li><a href="{% url "cart" %}">Contact</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{% url "cart" %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                  <span class="badge badge-info">{{request.session.card|length}}</span>
             </ul>
             <div class="logo">
                 <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="">
             </div>
         </div>
     </nav>
-
+  
 
     <div class="container">
       <h1>Shopping Cart</h1>
@@ -58,8 +60,8 @@
 
               <p class="product-remove">
                 <i class="fa fa-trash" aria-hidden="true"></i>
-
-                <span class="remove">Remove</span>
+                <a href="{% url 'remove' pk=i.id %}">
+                <span class="remove">Remove</span></a>
               </p>
             </div>
           </div>
@@ -83,9 +85,9 @@
           </p>
 
           <p>
-            <span>You Save</span>
+            <span>CGST</span>
 
-            <span>₹ 1,000</span>
+            <span>16%</span>
           </p>
 
           <a href="#">Proceed to Checkout</a>

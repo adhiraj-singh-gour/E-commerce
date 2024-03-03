@@ -38,6 +38,7 @@
                   <li><a href="#news">Blog</a></li>
                   <li><a href="#contact">Contact</a></li>
                   <li><a href="{% url "cart" %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                  <span class="badge badge-info">{{request.session.card|length}}</span>
               </ul>
               <div class="logo">
                   <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="">
@@ -114,7 +115,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{i.Price}}
+                              ₹ {{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle red'></i>
                                   <i class='bx bxs-circle blue'></i>
@@ -144,7 +145,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{i.Price}}
+                              ₹ {{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle green'></i>
                                   <i class='bx bxs-circle grey'></i>
@@ -171,7 +172,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{i.Price}}
+                              ₹ {{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle brown'></i>
                                   <i class='bx bxs-circle green'></i>
@@ -198,7 +199,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{i.Price}}
+                              ₹ {{i.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle red'></i>
                                   <i class='bx bxs-circle grey'></i>
@@ -238,7 +239,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{j.Price}}
+                              ₹ {{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle blue'></i>
@@ -265,7 +266,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{j.Price}}
+                              ₹ {{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle brown'></i>
                                   <i class='bx bxs-circle red'></i>
@@ -292,7 +293,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{j.Price}}
+                              ₹ {{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle grey'></i>
                                   <i class='bx bxs-circle blank'></i>
@@ -319,7 +320,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{j.Price}}
+                              ₹ {{j.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle grey'></i>
                                   <i class='bx bxs-circle red'></i>
@@ -357,7 +358,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{k.Price}}
+                              ₹ {{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle grey'></i>
                                   <i class='bx bxs-circle black'></i>
@@ -384,7 +385,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{k.Price}}
+                              ₹ {{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle blue'></i>
@@ -411,7 +412,7 @@
                               <i class='bx bxs-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{k.Price}}
+                              ₹ {{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle red'></i>
@@ -438,7 +439,7 @@
                               <i class='bx bx-star'></i>
                           </div>
                           <div class="price">
-                              &dollar;{{k.Price}}
+                              ₹ {{k.Price}}
                               <div class="colors">
                                   <i class='bx bxs-circle blank'></i>
                                   <i class='bx bxs-circle grey'></i>

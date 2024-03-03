@@ -206,6 +206,7 @@ nav ul i{
                 <li><a href="#news">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="{% url "cart" %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <span class="badge badge-info">{{request.session.card|length}}</span>
             </ul>
             <div class="logo">
                 <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="">
