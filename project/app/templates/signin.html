@@ -81,11 +81,11 @@
   <div class="login-container">
     <h4 style="color:red;">{{msg}}</h4>
     <h2>Signin</h2>
-    <form action="{% url "usersignin" %}" method="POST">
+    <form action="{% url 'usersignin' %}" method="POST">
       {% csrf_token %}
       <div class="input-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" required>
+        <label for="username">email</label>
+        <input type="text" id="username" name="email" required>
       </div>
       <div class="input-group">
         <label for="password">Password</label>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 from .forms import Product
 
@@ -44,31 +44,46 @@ def usersignup(request):
 
 def usersignin(request):
     if request.method == "POST":
-        username = request.POST["username"]
-        password = request.POST["password"]
-
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        print(email,password)
         # Checking the emailid with database
-        user = Signup.objects.filter(username=username)
+        user = Signup.objects.filter(email=email)
         if user:
-            data = Signup.objects.get(username=username)
+            data = Signup.objects.get(email=email)
             if data.password == password:
+                id  = data.id
                 username = data.username
                 email = data.email
                 password = data.password
-                user = {
-                    "username": username,
-                    "email": email,
-                    "password": password,
+                request.session['id']=id
+                request.session['name']=username
+                request.session['email']=email
+                user={
+                    'name':username,
+                    'email':email,
+                    'password':password,
                 }
-                return render(request, "home.html", user)
+                data = Products.objects.filter(Type="tshirt")
+                data1 = Products.objects.filter(Type="shoes")
+                data2 = Products.objects.filter(Type="glasses")
+                return render(request,"user.html",{"user":user,"ts": data,"sh":data1,"sg":data2})
             else:
                 message = "Password does not match"
-                return render(request, "login.html", {"msg": message})
+                return render(request,"signin.html",{'msg':message})
         else:
             message = "User does not exist"
-            return render(request, "register.html", {"msg": message})
+            return render(request,"signup.html",{'msg':message})
 
 
+def logout(request):
+    
+    del request.session['id']
+    del request.session['name']
+    del request.session['email']
+    request.session.flush()
+
+    return redirect('home')
 
 def contact(request):
     name = request.POST.get('name')
@@ -92,7 +107,21 @@ def product(request,pk):
     return render(request,'productDetail.html', {"data": data})
 
 def cart(request):
-    return render(request,'cart.html')
+    card = request.session['card']
+    
+    data = {}
+    key = 1
+    sum = 0
+    items = 0
+    for i in card:
+        data[key] = Products.objects.get(id=i)
+        print(data)
+        sum = sum + data[key].Price
+        key+=1
+    items += len(data.keys())       
+    print(sum) 
+    return render(request,'cart.html', {"data": data.values,'sum':sum,'items':items})
+        # return render(request,'cart.html')
 
 def add_cart(request,pk):
     card = request.session.get('card',[])
