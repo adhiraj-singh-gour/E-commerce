@@ -64,7 +64,7 @@
           </li>
 
           <li>
-            <a href="{% url "allorder" %}">
+            <a href="#">
               <span class="icon">
                 <ion-icon name="settings-outline"></ion-icon>
               </span>
@@ -175,12 +175,12 @@
                     <th>PASSWORD</th>
                 </tr>
                 <tbody>
-                {% for i in user %}
+                {% for i in data %}
                     <tr>
-                        <th>{{i.id}}</th>
-                        <th>{{i.username}}</th>
-                        <th>{{i.email}}</th>
-                        <th>${{i.password}}</th>
+                        <th>{{i.name}}</th>
+                        <th>{{i.amount}}</th>
+                        <th>{{i.order_id}}</th>
+                        <th>${{i.paid}}</th>
                         {% comment %} <th><img src="{{i.image.url}}" height="70" width="70"></th> {% endcomment %}
                 
                     </tr>

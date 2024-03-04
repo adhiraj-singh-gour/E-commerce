@@ -64,7 +64,7 @@
           </li>
 
           <li>
-            <a href="{% url "allorder" %}">
+            <a href="#">
               <span class="icon">
                 <ion-icon name="settings-outline"></ion-icon>
               </span>
@@ -170,18 +170,24 @@
               <thead>
                 <tr>
                     <th>Id</th>
-                    <th>USERNAME</th>
-                    <th>EMAIL</th>
-                    <th>PASSWORD</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+
                 </tr>
                 <tbody>
-                {% for i in user %}
+                {% for i in data %}
                     <tr>
                         <th>{{i.id}}</th>
-                        <th>{{i.username}}</th>
-                        <th>{{i.email}}</th>
-                        <th>${{i.password}}</th>
-                        {% comment %} <th><img src="{{i.image.url}}" height="70" width="70"></th> {% endcomment %}
+                        <th>{{i.Name}}</th>
+                        <th>{{i.Description}}</th>
+                        <th>${{i.Price}}</th>
+                        <th><img src="{{i.image.url}}" height="70" width="70"></th>
+                        <th><a href="{% url 'update' pk=i.id %}">Update</a></th>
+                        <th><a href="{% url 'delete' pk=i.id %}">Delete</a></th>
                 
                     </tr>
                 {% endfor %}
@@ -190,8 +196,8 @@
             </table>
           </div>
 
-          <!-- ================= New Customers ================ -->
-          {% comment %} <div class="recentCustomers">
+          {% comment %} <!-- ================= New Customers ================ -->
+          <div class="recentCustomers">
             <div class="cardHeader">
               <h2>Recent Customers</h2>
             </div>

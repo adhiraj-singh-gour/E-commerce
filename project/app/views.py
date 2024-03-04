@@ -175,21 +175,31 @@ def viewuser(request):
 
 def update(request,pk):
     data = Products.objects.get(id=pk)
-    return render(request,'add.html',{'data':data})
+    return render(request,'update.html',{'data':data})
 
-def update_product(request):
+def update_product(request,pk):
     if request.method == "POST":
-        form = Product(request.POST, request.FILES)
-        if form.is_valid():
-            form.save() 
-    form = Product()
-    return render(request, "update.html", {"form": form})
+        data=Products.objects.get(id=pk)
+        data.Name=request.POST['Name']
+        data.Type=request.POST['Type']
+        data.Price=request.POST['Price']
+        data.Description=request.POST['Description']
+        data.image=request.POST['image']
+        data.save()
+        data=Products.objects.all()
+
+    return render(request, "admin.html", {"data":data})
 
 def delete(request, pk):
     data = Products.objects.get(id=pk)
     data.delete()
     data=Products.objects.all()
     return render(request,'admin.html')
+
+
+def allorder(request):
+    data = ItemModel.objects.all()
+    return render(request, "allorder.html", {"data": data})
 
 
 
